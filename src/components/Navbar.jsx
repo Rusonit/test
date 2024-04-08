@@ -5,13 +5,16 @@ const Navbar = () => {
     <nav className='nav'>
           nav Profile
       <div> 
-          Music
+          Musicc
       </div>  
       <div>
           Settings 
       </div>  
+      <div>
+        Some new
+      </div>  
     </nav>
-  )  
+  )   
 };
 
 export default Navbar;
