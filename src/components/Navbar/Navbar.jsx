@@ -1,8 +1,8 @@
-import './Navbar.css';
+import Class from './Navbar.module.css';
 
 const Navbar = () => {
   return (
-    <nav className='nav'>
+    <nav className={Class.nav}>
           nav Profile
       <div> 
           Musicc

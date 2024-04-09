@@ -1,4 +1,6 @@
 .nav {
     grid-area: nav;
     background-color: limegreen;
+    color: whitesmoke;
+    padding: 10px;
 }
