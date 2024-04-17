@@ -1,6 +1,15 @@
 .nav {
     grid-area: nav;
     background-color: limegreen;
-    color: whitesmoke;
     padding: 10px;
+}
+
+.link {
+    color: whitesmoke ;
+    text-decoration: none;
+}
+
+
+.link:focus {
+    color: gold;
 }
