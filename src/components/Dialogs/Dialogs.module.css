@@ -6,8 +6,18 @@
 
 .dialog {
   color: navajowhite;
+  text-decoration: none;
 }
 
 .messages {
   color: lightpink;
+}
+
+.dialogItem {
+  color: navajowhite;
+  text-decoration: none;
+}
+
+.dialogItem:focus {
+  color: gold;
 }
