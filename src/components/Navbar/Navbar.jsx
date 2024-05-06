@@ -1,7 +1,12 @@
 import Class from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
+import SiteBar from './SiteBar'
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  let topFriends = props.state.topFriends.map(el => <div> <img src={el.img}/> <div>{el.name}</div> </div>);
+        <img src={props.ava} />  
+
   return (
     <nav className={Class.nav}>
         <div>    
@@ -16,9 +21,10 @@ const Navbar = () => {
         <div>
             Settings 
         </div>  
-        <div>
-            Some new
-       </div>  
+        <div className={Class.topFriends}>
+        <h3>Top friends:</h3>
+        {topFriends}
+        </div>
     </nav>
   )   
 };

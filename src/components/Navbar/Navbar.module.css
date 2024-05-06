@@ -9,7 +9,6 @@
     text-decoration: none;
 }
 
-
 .link:focus {
     color: gold;
 }
@@ -18,3 +17,13 @@
 .item a:focus {
 color: gold;
 }*/
+
+.topFriends img {
+    width: 55px;
+    height: 55px;
+}
+
+.topFriends {
+    padding-top: 90px;
+    color: lightskyblue;
+ }   
