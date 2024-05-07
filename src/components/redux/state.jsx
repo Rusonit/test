@@ -1,3 +1,6 @@
+import {rerenderEntireTree} from '../../../src/render';
+
+
 let state = {
   profilePage: { 
     posts: [
@@ -8,7 +11,7 @@ let state = {
   },
   dialogsPage: {
     dialogs: [ 
-      { id: 1, name: 'Leonardo', img: 'https://lh3.googleusercontent.com/proxy/uorU98Y9JtSq0PNBH3bCZeDxdIg3nmu31Fe5HpxSxsVzAMHW4tULezXGYXKbtATKjKyq6Vso0GgB7jCVOsEfaPV7TXKlSZbngMyZkJzy7csqcYM2mcrFV0kI2jQTjEJe12Q6XdypbDt9qCmadxTIvLjA2gSx69G2geq8sapzC1v0iwImnqPuw1fggSP8Om9rqB0SL2rnd80SDQeuVpm74_of6a_uOFQdnCMTr8-TNTsC5O4cOAwIr68bJM1R-qX8trLq9NBjQmWC'},
+      { id: 1, name: 'Leonardo', img: 'https://www.mosigra.ru/image/cache/data/Photo/Leonardo2-1024x1024-wm.jpg'},
       { id: 2, name: 'Donatello', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBHBh2OHZBabHQG8b751j5vvmctc_yuunPRDG_J-LeeG62XN5tWwyPZBbLNJpmxNWmbk&usqp=CAU'},
       { id: 3, name: 'Mickelangelo', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMfMgWUPpom_70tuMN0yKaLmgbhAP6zLMeejWAqjN1lbBE55gb3UGVVodIvWC2YHhVeuY&usqp=CAU'},
       { id: 4, name: 'Rafael', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTva9CAfX7cu5fBpsoxxdpoXMxukQ74ndc5naNrXn7rwA&s'},
@@ -17,7 +20,7 @@ let state = {
     messages: [
       { id: 1, message: 'Cowabanga!'},  
       { id: 2, message: 'Hey Leo!'},
-      { id: 3, message: 'Where is Casey?!'},
+      { id: 3, message: 'Where is Casey?!'},      
       { id: 4, message: 'Nobody care, man!'},
       { id: 5, message: 'See y`all!'}
     ]
@@ -29,6 +32,16 @@ let state = {
       {id: 3, name: 'Rocksteady', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMHqoq05hmpm0PFIq-t2WDh_houuJHgPSFR6kHmOb3Fg&s'},
     ]
   }
+};
+
+export let addPost = (newText) => {
+  let newPost = {
+    id:4,
+    likeCount: 10,
+    message: (newText)
+  }
+  state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;
