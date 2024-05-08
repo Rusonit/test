@@ -15,9 +15,14 @@ const MyPosts = (props) => {
     newPostElement.current.value = '';
   }
 
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.UpdateNewPostText(text);      
+  };
+
   return (
       <>
-          <textarea ref={newPostElement} style={{marginLeft:'10px'}}></textarea>
+          <textarea onChange={onPostChange} value={props.newPostText} ref={newPostElement} style={{marginLeft:'10px'}} />
         <div>   
           <button onClick={NewPostFunction} style={{marginLeft:'10px'}}>add post</button>   
         </div>  
