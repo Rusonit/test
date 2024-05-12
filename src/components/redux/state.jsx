@@ -8,7 +8,7 @@ let state = {
       {id: 2, likeCount: 15, message: 'Yahooo!'},
       {id: 3, likeCount: 4, message: 'Map is work!'}
     ],
-    newPostText: '',
+    newPostText: 'sidebar',
   },
   dialogsPage: {
     dialogs: [ 
@@ -35,18 +35,20 @@ let state = {
   }
 };
 
-export let addPost = (newText) => {
+export let addPost = () => {
   let newPost = {
     id:4,
     likeCount: 10,
-    message: (newText)
-  }
+    message: state.profilePage.newPostText
+  };
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = '';
   rerenderEntireTree(state);
+
 };
 
 export let UpdateNewPostText = (text) => {
-  state.profilePage.NewPostText = text;
+  state.profilePage.newPostText = text;
   rerenderEntireTree(state);
 }
 
