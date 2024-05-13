@@ -8,14 +8,18 @@ import { createRef } from 'react';
 
 const Dialogs = (props) => {
 
-  let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} ava={d.img}/>)
-  let messagesElements = props.state.messages.map(m => <Message message={m.message} />)
+  let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem id={d.id} name={d.name} ava={d.img}/>)
+  let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} />)
 
-  let newMessageText = React.createRef();
+  let newMessageEl = React.createRef();
 
-  let addMessage = () => {
-    let text = newMessageText.current.value;
-    alert(text);
+  let addNewMessage = () => {
+    props.addMessage();
+  }
+
+  let updateMessageText = () => {
+    let text = newMessageEl.current.value;
+    props.updateNewMessageText(text);
   }
 
   return (
@@ -26,9 +30,9 @@ const Dialogs = (props) => {
       <div className={Class.messages}>
         {messagesElements}
 
-        <textarea ref={newMessageText} />
+        <textarea onChange={updateMessageText} value={props.newMessageText} ref={newMessageEl} />
         <div>  
-          <button onClick={addMessage}>new message</button>
+          <button onClick={addNewMessage}>new message</button>
         </div>
       </div>
     </div>  
