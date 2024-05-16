@@ -1,8 +1,5 @@
-let rerenderEntireTree = () => {
-  console.log('yo');
-}
-
-let state = {
+let store = {
+  _state: {
   profilePage: { 
     posts: [
       {id: 1, likeCount: 7, message: 'Hey thats first post!'},    
@@ -34,53 +31,43 @@ let state = {
       {id: 2, name: 'Bibop', img: 'https://action-figure.ru/wp-content/uploads/2023/03/Podvizhnaya-figurka-Bibop-Cherepashki-Nindzya-Bebop-Teenage-Mutant-Ninja-Turtles-BST-AXN-Figure-ot-Loyal-Subjects-LS0003..jpg'},
       {id: 3, name: 'Rocksteady', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMHqoq05hmpm0PFIq-t2WDh_houuJHgPSFR6kHmOb3Fg&s'},
     ]
-  }
-};
-
-window.state = state;
-
-
-export const addPost = () => {
+  }},
+  getState() {
+    return this._state},
+  addPost() {
   let newPost = {
     id:4,
     likeCount: 10,
-    message: state.profilePage.newPostText
+    message: this._state.profilePage.newPostText
   };
-  state.profilePage.posts.push(newPost);
-  state.profilePage.newPostText = '';
-  rerenderEntireTree(state);
-
+  this._state.profilePage.posts.push(newPost);
+  this._state.profilePage.newPostText = '';
+  this._rerenderEntireTree(this._state);},
+  UpdateNewPostText(text) {
+  this._state.profilePage.newPostText = text;
+  this._rerenderEntireTree(this._state);},  
+  addMessage() {
+    let newMessage = {
+      id: 6,
+      message: this._state.dialogsPage.newMessageText
+    };
+    this._state.dialogsPage.messages.push(newMessage);
+    this._state.dialogsPage.newMessageText = '';  
+    this._rerenderEntireTree(this._state);},
+  updateNewMessageText(text) {
+    this._state.dialogsPage.newMessageText = text;
+    this._rerenderEntireTree(this._state);},
+  subscribe(observer) {
+    this._rerenderEntireTree = observer;},
+  _rerenderEntireTree() {
+    console.log('yo');}
 };
 
-export const UpdateNewPostText = (text) => {
-  state.profilePage.newPostText = text;
-  rerenderEntireTree(state);
-}
+window.store = store;
 
+export default store;
 
-export const addMessage = () => {
-  let newMessage = {
-    id: 6,
-    message: state.dialogsPage.newMessageText
-  };
-  state.dialogsPage.messages.push(newMessage);
-  state.dialogsPage.newMessageText = '';  
-  rerenderEntireTree(state);
-};
-
-export const updateNewMessageText = (text) => {
-  state.dialogsPage.newMessageText = text;
-  rerenderEntireTree(state);
-};
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
-}
-
-
-export default state;
-
-
+// rerenderEntireTree => callSubscriber
 
 
  
