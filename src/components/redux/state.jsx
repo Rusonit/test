@@ -32,8 +32,14 @@ let store = {
       {id: 3, name: 'Rocksteady', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMHqoq05hmpm0PFIq-t2WDh_houuJHgPSFR6kHmOb3Fg&s'},
     ]
   }},
+  _callSubscriber() {
+    console.log('yo');},
+
   getState() {
     return this._state},
+  subscribe(observer) {
+    this._callSubscriber = observer;},
+
   addPost() {
   let newPost = {
     id:4,
@@ -42,10 +48,10 @@ let store = {
   };
   this._state.profilePage.posts.push(newPost);
   this._state.profilePage.newPostText = '';
-  this._rerenderEntireTree(this._state);},
+  this._callSubscriber(this._state);},
   UpdateNewPostText(text) {
   this._state.profilePage.newPostText = text;
-  this._rerenderEntireTree(this._state);},  
+  this._callSubscriber(this._state);},  
   addMessage() {
     let newMessage = {
       id: 6,
@@ -53,14 +59,27 @@ let store = {
     };
     this._state.dialogsPage.messages.push(newMessage);
     this._state.dialogsPage.newMessageText = '';  
-    this._rerenderEntireTree(this._state);},
+    this._callSubscriber(this._state);},
   updateNewMessageText(text) {
     this._state.dialogsPage.newMessageText = text;
-    this._rerenderEntireTree(this._state);},
-  subscribe(observer) {
-    this._rerenderEntireTree = observer;},
-  _rerenderEntireTree() {
-    console.log('yo');}
+    this._callSubscriber(this._state);},
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id:4,
+        likeCount: 10,
+        message: this._state.profilePage.newPostText
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);    
+    }
+    else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state)
+    };
+  },
 };
 
 window.store = store;
