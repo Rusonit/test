@@ -1,5 +1,7 @@
 import Class from './ProfileInfo.module.css';
 
+
+
 const ProfileInfo = () => {
   return (
     <div className={Class.content}>  
