@@ -5,20 +5,20 @@ import {addPostActionCreater, onPostChangeActionCreater} from '../../redux/profi
 import MyPosts from './MyPosts';
 
 const MyPostsContainer = (props) => {
+  let state = props.store.getState();
 
   let addPost = () => {
-   //props.addPost();
-   props.dispatch(addPostActionCreater()); 
+    props.store.dispatch(addPostActionCreater()); 
   };
 
-  let onPostChange = () => {
-    let newText = newPostElement.current.value;
-    // props.UpdateNewPostText(text);
-    props.dispatch(onPostChangeActionCreater(newText));       
+  let onPostChange = (newText) => {
+    props.store.dispatch(onPostChangeActionCreater(newText));       
   };
 
   return (  
-      <MyPosts />
+      <MyPosts UpdateNewPostText={onPostChange} addPost={addPost}
+               posts={state.profilePage.posts}
+               newPostText={state.profilePage.newPostText} />
   );
 }
 
