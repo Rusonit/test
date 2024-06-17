@@ -3,6 +3,7 @@ import { createRef, Component } from 'react';
 import React from 'react';
 import {addPostActionCreater, onPostChangeActionCreater} from '../../redux/profileReducer';
 import MyPosts from './MyPosts';
+import { connect } from 'react-redux';
 
 const MyPostsContainer = (props) => {
   let state = props.store.getState();
@@ -21,5 +22,6 @@ const MyPostsContainer = (props) => {
                newPostText={state.profilePage.newPostText} />
   );
 }
+
 
 export default MyPostsContainer;
