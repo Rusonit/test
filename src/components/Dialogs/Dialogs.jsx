@@ -9,8 +9,8 @@ import {addNewMessageActionCreater, updateMessageTextActionCreater} from '../red
 const  Dialogs = (props) => {
   let state = props.dialogsPage;
 
-  let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem id={d.id} name={d.name} ava={d.img}/>)
-  let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} />)
+  let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem id={d.id} key={d.id} name={d.name} ava={d.img}/>)
+  let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} key={m.id}/>)
   let newMessageText = state.newMessageText;
 
   let onSendMessageClick = () => {

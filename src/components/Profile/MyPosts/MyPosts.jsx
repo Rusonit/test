@@ -6,7 +6,7 @@ import {addPostActionCreater, onPostChangeActionCreater} from '../../redux/profi
 
 const MyPosts = (props) => {
 
-  let postsElements = props.posts.map(p => <Post likeCount={p.likeCount} message={p.message} />)
+  let postsElements = props.posts.map(p => <Post likeCount={p.likeCount} message={p.message} key={p.id}/>)
 
   let newPostElement = React.createRef();
 

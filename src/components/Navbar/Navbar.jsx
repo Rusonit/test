@@ -4,7 +4,7 @@ import SiteBar from './SiteBar'
 
 const Navbar = (props) => {
 
-  let topFriends = props.state.topFriends.map(el => <div> <img src={el.img}/> <div>{el.name}</div> </div>);
+  let topFriends = props.state.topFriends.map(el => <div> <img src={el.img} key={el.id}/> <div>{el.name}</div> </div>);
         <img src={props.ava} />  
 
   return (
