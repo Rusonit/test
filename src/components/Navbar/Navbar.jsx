@@ -1,6 +1,6 @@
 import Class from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
-import SiteBar from './SiteBar'
+import SiteBar from './SiteBar';
 
 const Navbar = (props) => {
 
@@ -19,11 +19,14 @@ const Navbar = (props) => {
             <NavLink to='/music' className={Class.link}>Music</NavLink>
         </div>  
         <div>
+            <NavLink to='/users' className={Class.link}>Users</NavLink> 
+        </div>
+        <div>
             Settings 
         </div>  
         <div className={Class.topFriends}>
-        <h3>Top friends:</h3>
-        {topFriends}
+            <h3>Top friends:</h3>
+            {topFriends}
         </div>
     </nav>
   )   
