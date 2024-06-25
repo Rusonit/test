@@ -4,11 +4,13 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
   users: [
-    {id: 1, followed: true, fullName: 'Jake', status: 'This is a sheriff', location: {city: 'Paris', country: 'France'}},
-    {id: 2, followed: false, fullName: 'Jimmy', status: 'Super human', location: {city: 'Italy', country: 'Rome'}},
-    {id: 3, followed: true, fullName: 'Bobby', status: 'Just person', location: {city: 'Russia', country: 'Moscow'}},
-
-  ];
+    {id: 1, fotoUrl: 'https://t4.ftcdn.net/jpg/05/66/05/55/360_F_566055532_TVl1zRxXpTJYVHAq8RwrI2r2LQvu7oN3.jpg',
+      followed: true, fullName: 'Jake', status: 'This is a sheriff', location: {country: 'France', city: 'Paris'}},
+    {id: 2, fotoUrl: 'https://t4.ftcdn.net/jpg/05/66/05/55/360_F_566055532_TVl1zRxXpTJYVHAq8RwrI2r2LQvu7oN3.jpg',
+      followed: false, fullName: 'Jimmy', status: 'Super human', location: {country: 'Italy', city: 'Rome'}},
+    {id: 3, fotoUrl: 'https://t4.ftcdn.net/jpg/05/66/05/55/360_F_566055532_TVl1zRxXpTJYVHAq8RwrI2r2LQvu7oN3.jpg',
+      followed: true, fullName: 'Bobby', status: 'Just person', location: {country: 'Russia', city: 'Moscow'}},
+    ]
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -23,7 +25,7 @@ const usersReducer = (state = initialState, action) => {
             return {...u, followed: true}
           }
           return u;
-        });
+        }),
       };   
     case UNFOLLOW: 
       return {
@@ -33,7 +35,7 @@ const usersReducer = (state = initialState, action) => {
             return {...u, followed: false}
           }  
           return u;
-        });
+        }),
       }
     case SET_USERS:
       return {
@@ -47,7 +49,7 @@ const usersReducer = (state = initialState, action) => {
 
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
-export const setUsersAC (users) => ({type: SET_USERS, users});
+export const setUsersAC = (users) => ({type: SET_USERS, users});
 
 
 export default usersReducer;

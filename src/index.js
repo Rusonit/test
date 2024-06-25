@@ -14,7 +14,7 @@ root.render(
     <Provider store={store}>
 
       <React.StrictMode>
-        <App store={store}  />   // store для навбара
+        <App store={store}  />   // store только для навбара
       </React.StrictMode>
     
     </Provider>    

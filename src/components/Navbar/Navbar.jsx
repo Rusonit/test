@@ -1,5 +1,5 @@
 import Class from './Navbar.module.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SiteBar from './SiteBar';
 
 const Navbar = (props) => {
